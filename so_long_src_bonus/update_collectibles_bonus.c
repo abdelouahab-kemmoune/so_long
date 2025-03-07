@@ -6,7 +6,7 @@
 /*   By: akemmoun <akemmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 16:50:45 by akemmoun          #+#    #+#             */
-/*   Updated: 2025/03/03 01:41:02 by akemmoun         ###   ########.fr       */
+/*   Updated: 2025/03/07 23:08:25 by akemmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	update_collectibles(t_game *game)
 	static int	counter = 0;
 
 	counter++;
-	if (counter >= 50)
+	if (counter >= 20)
 	{
 		counter = 0;
 		frame++;

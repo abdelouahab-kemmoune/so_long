@@ -6,7 +6,7 @@
 /*   By: akemmoun <akemmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 15:10:10 by akemmoun          #+#    #+#             */
-/*   Updated: 2025/03/07 21:17:22 by akemmoun         ###   ########.fr       */
+/*   Updated: 2025/03/07 23:06:11 by akemmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,6 @@ int	loop(t_game *game)
 		frame_counter = 0;
 	}
 	handle_keys(game);
+	put_count(game);
 	return (1);
 }
