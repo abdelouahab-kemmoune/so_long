@@ -6,7 +6,7 @@
 /*   By: akemmoun <akemmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 15:10:10 by akemmoun          #+#    #+#             */
-/*   Updated: 2025/03/04 00:43:55 by akemmoun         ###   ########.fr       */
+/*   Updated: 2025/03/07 22:47:58 by akemmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	free_all(t_game *game)
 {
+	int i;
+
+	i = 0;
 	if (game->wall)
 		mlx_destroy_image(game->mlx, game->wall);
 	if (game->left_player)
@@ -28,7 +31,15 @@ void	free_all(t_game *game)
 		mlx_destroy_image(game->mlx, game->enemies);
 	if (game->count_moves)
 		mlx_destroy_image(game->mlx, game->count_moves);
-	free_all2(game);
+	while (i < 5)
+	{
+		if (game->frames[i])
+		{
+			mlx_destroy_image(game->mlx, game->frames[i]);
+			game->frames[i] = NULL;
+			i++;
+		}
+	}
 }
 
 int	close_window(t_game *game)
@@ -56,7 +67,16 @@ int	close_window(t_game *game)
 		i++;
 	}
 	mlx_clear_window(game->mlx, game->window);
-	close_window2(game);
+	if (game->window)
+	{
+		mlx_destroy_window(game->mlx, game->window);
+		game->window = NULL;
+	}
+	if (game->mlx)
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
 	exit(0);
 }
 
@@ -78,7 +98,16 @@ void	load_all_sprites(t_game *game)
 			"./assets/count_moves.xpm", &game->img_width, &game->img_height);
 	game->enemies = mlx_xpm_file_to_image(game->mlx, "./assets/enemy.xpm",
 			&game->img_width, &game->img_height);
-	load_all_sprites2(game);
+
+	game->frames[0] = game->collectible;
+	game->frames[1] = mlx_xpm_file_to_image(game->mlx, "./assets/diamond2.xpm",
+			&game->img_width, &game->img_height);
+	game->frames[2] = mlx_xpm_file_to_image(game->mlx, "./assets/diamond3.xpm",
+			&game->img_width, &game->img_height);
+	game->frames[3] = mlx_xpm_file_to_image(game->mlx, "./assets/diamond4.xpm",
+			&game->img_width, &game->img_height);
+	game->frames[4] = mlx_xpm_file_to_image(game->mlx, "./assets/diamond5.xpm",
+			&game->img_width, &game->img_height);
 	ft_check_files(game);
 }
 
@@ -91,7 +120,7 @@ void	init_game(t_game *game, char *av)
 		ft_printf("ERROR: Failed to initialize mlx.\n");
 		exit(1);
 	}
-	set_zero(game);
+	// set_zero(game);
 	game->map = get_map(av, game);
 	if (!game->map)
 	{

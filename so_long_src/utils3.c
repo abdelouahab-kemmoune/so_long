@@ -6,7 +6,7 @@
 /*   By: akemmoun <akemmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 19:07:25 by akemmoun          #+#    #+#             */
-/*   Updated: 2025/03/04 00:29:01 by akemmoun         ###   ########.fr       */
+/*   Updated: 2025/03/07 02:34:19 by akemmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,4 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	}
 	str[len] = '\0';
 	return (str);
-}
-
-void	set_zero(t_game *game)
-{
-	game->flag = 0;
-	game->keypress = 0;
-	game->count = 0;
-	game->has_collected = 0;
-	game->curr_frame = 0;
-	game->exit_message_displayed = 0;
-	game->rows = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: akemmoun <akemmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 19:10:17 by akemmoun          #+#    #+#             */
-/*   Updated: 2025/03/04 00:09:11 by akemmoun         ###   ########.fr       */
+/*   Updated: 2025/03/07 21:06:08 by akemmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,19 @@ char	*read_map(int fd)
 	char	*line;
 
 	file = ft_strdup("");
-	if (fd < 0)
+	while ((line = get_next_line(fd)))
 	{
-		free(file);
-		ft_printf("ERROR:\nInvalid file name!!");
-		return (NULL);
-	}
-	while (1)
-	{
-		line = get_next_line(fd);
 		if (!line)
 			return (free(file), NULL);
 		temp = file;
 		file = ft_strjoin(file, line);
 		free(temp);
 		free(line);
+
+		if (!file)
+			return (NULL);
 	}
+	
 	return (file);
 }
 
@@ -44,20 +41,29 @@ char	**get_map(char *name, t_game *game)
 	char	*file;
 	char	**map;
 
-	fd = open(name, O_RDWR);
+	fd = open(name, O_RDONLY);
 	if (fd < 0)
 	{
 		ft_printf("ERROR:\nCannot open file!");
 		close_window(game);
 	}
+	
 	file = read_map(fd);
-	if (!file)
+	
+	close (fd);
+	
+	if (!file){
+		
 		close_window(game);
+	}
+	
 	map = ft_split(file, '\n');
 	free(file);
 	close(fd);
+	
 	return (map);
 }
+
 
 int	file_check(char *filename)
 {
