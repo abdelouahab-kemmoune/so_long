@@ -6,7 +6,7 @@
 /*   By: akemmoun <akemmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 15:10:10 by akemmoun          #+#    #+#             */
-/*   Updated: 2025/03/07 23:06:11 by akemmoun         ###   ########.fr       */
+/*   Updated: 2025/03/07 23:46:03 by akemmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	handle_keys(t_game *game)
 		game->has_collected = 1;
 		game->map[pos.n_ypos][pos.n_xpos] = '0';
 		game->count++;
-		ft_printf("Moves: %d\n", game->count);
+		put_count(game);
 	}
 	if ((game->p_xpos != pos.n_xpos || game->p_ypos != pos.n_ypos)
 		&& game->map[pos.n_ypos][pos.n_xpos] != 'E')
@@ -93,7 +93,7 @@ int	handle_keys(t_game *game)
 		game->p_xpos = pos.n_xpos;
 		game->p_ypos = pos.n_ypos;
 		game->count++;
-		ft_printf("Moves: %d\n", game->count);
+		put_count(game);
 		game->exit_message_displayed = 0;
 	}
 	game->keypress = 0;

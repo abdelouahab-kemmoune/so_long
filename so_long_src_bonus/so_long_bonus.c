@@ -6,7 +6,7 @@
 /*   By: akemmoun <akemmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 15:10:10 by akemmoun          #+#    #+#             */
-/*   Updated: 2025/03/07 23:07:32 by akemmoun         ###   ########.fr       */
+/*   Updated: 2025/03/07 23:46:47 by akemmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ void	init_game(t_game *game, char *av)
 		ft_printf("ERROR: Failed to create window.\n");
 		close_window(game);
 	}
-	//put_count(game);
+	// put_count(game);
 }
 
 int	main(int ac, char **av)
