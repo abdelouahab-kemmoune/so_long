@@ -6,7 +6,7 @@
 /*   By: akemmoun <akemmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 19:10:55 by akemmoun          #+#    #+#             */
-/*   Updated: 2025/03/08 21:22:01 by akemmoun         ###   ########.fr       */
+/*   Updated: 2025/03/08 21:34:52 by akemmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,12 @@ void	mvt(t_npos *npos, t_game *game)
 	}
 }
 
-int handle_keys(t_game *game)
+int	handle_keys(t_game *game)
 {
-	t_npos pos = {game->p_xpos, game->p_ypos};
+	t_npos	pos;
 
+	pos.n_xpos = game->p_xpos;
+	pos.n_ypos = game->p_ypos;
 	mvt(&pos, game);
 	if (game->map[pos.n_ypos][pos.n_xpos] == '1')
 		return (0);
@@ -82,6 +84,9 @@ int	keycode(int keycode, t_game *game)
 
 int	loop(t_game *game)
 {
-	handle_keys(game);
+	if (game->keypress != 0)
+	{
+		handle_keys(game);
+	}
 	return (1);
 }

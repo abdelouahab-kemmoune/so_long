@@ -81,7 +81,7 @@ void		put_digit(t_game *game, int digit, int x, int y);
 char		*read_file_to_buffer(int fd);
 void		ft_check_files(t_game *game);
 void		free_all(t_game *game);
-void update_player_position(t_game *game, t_npos *pos);
+void		update_player_position(t_game *game, t_npos *pos);
 // void		set_zero(t_game *game);
 
 char		*ft_strncpy(char *dest, char const *src, int n);
@@ -97,7 +97,7 @@ char		*ft_strchr(const char *str, int c);
 
 int			is_map_empty(char **map, t_game *game);
 int			is_exit_valid(t_game *game);
-int handle_special_cases(t_game *game, t_npos *pos);
+int			handle_special_cases(t_game *game, t_npos *pos);
 // int			handle_keys_util1(t_game *game);
 // int			handle_keys_util2(t_game *game);
 // int			handle_keys_util3(t_game *game);

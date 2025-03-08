@@ -6,7 +6,7 @@
 /*   By: akemmoun <akemmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 16:43:30 by akemmoun          #+#    #+#             */
-/*   Updated: 2025/03/08 01:26:12 by akemmoun         ###   ########.fr       */
+/*   Updated: 2025/03/08 22:44:44 by akemmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,9 @@ void		update_collectibles(t_game *game);
 char		*read_file_to_buffer(int fd);
 void		ft_check_files(t_game *game);
 void		free_all(t_game *game);
-// void		free_all2(t_game *game);
-// void		load_all_sprites2(t_game *game);
+void		update_player_position(t_game *game, t_npos *pos);
+void		free_all2(t_game *game);
+void		load_all_sprites2(t_game *game);
 
 char		*ft_strncpy(char *dest, char const *src, int n);
 char		**ft_copy(char const *s, char c, int words, char **array);
@@ -106,12 +107,10 @@ char		**copy_map(t_game *game, char **map);
 char		**get_map(char *name, t_game *game);
 char		*ft_strchr(const char *str, int c);
 
-int	is_map_empty(char **map, t_game *game);
-// int			close_window2(t_game *game);
+int			is_map_empty(char **map, t_game *game);
+int			close_window2(t_game *game);
 int			is_exit_valid(t_game *game);
-// int			handle_keys_util1(t_game *game);
-// int			handle_keys_util2(t_game *game);
-// int			handle_keys_util3(t_game *game);
+int			handle_special_cases(t_game *game, t_npos *pos);
 int			set_zero(t_game *game);
 int			file_check(char *filename);
 int			is_path_to_exit(char **map, t_game *game);

@@ -6,7 +6,7 @@
 /*   By: akemmoun <akemmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 17:42:59 by akemmoun          #+#    #+#             */
-/*   Updated: 2025/03/08 01:29:36 by akemmoun         ###   ########.fr       */
+/*   Updated: 2025/03/08 22:24:04 by akemmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	init_game(t_game *game, char *av)
 		ft_printf("ERROR: Failed to initialize mlx.\n");
 		exit(1);
 	}
-	// set_zero(game);
 	game->map = get_map(av, game);
 	if (!game->map || is_map_empty(game->map, game))
 	{

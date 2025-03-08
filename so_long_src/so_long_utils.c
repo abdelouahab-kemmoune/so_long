@@ -6,7 +6,7 @@
 /*   By: akemmoun <akemmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 19:10:17 by akemmoun          #+#    #+#             */
-/*   Updated: 2025/03/08 01:24:00 by akemmoun         ###   ########.fr       */
+/*   Updated: 2025/03/08 23:40:26 by akemmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,21 @@ char	*read_map(int fd)
 	char	*line;
 
 	file = ft_strdup("");
-	while ((line = get_next_line(fd)))
+	if (fd < 0)
 	{
+		free(file);
+		ft_printf("ERROR:\nInvalid file name!!");
+		return (NULL);
+	}
+	while (1)
+	{
+		line = get_next_line(fd);
 		if (!line)
-			return (free(file), NULL);
+			break ;
 		temp = file;
 		file = ft_strjoin(file, line);
 		free(temp);
 		free(line);
-		if (!file)
-			return (NULL);
 	}
 	return (file);
 }
@@ -91,26 +96,4 @@ void	find_player(char **map, t_game *game)
 		}
 		i++;
 	}
-}
-
-void	ft_check_files(t_game *game)
-{
-	if (!(game->ground || game->closedexit || game->right_player
-			|| game->left_player || game->wall || game->count_moves
-			|| game->collectible))
-	{
-		close_window(game);
-		free_all(game);
-	}
-}
-
-int	is_map_empty(char **map, t_game *game)
-{
-	if (!map || !map[0])
-	{
-		ft_printf("ERROR:\nMap is empty!");
-		close_window(game);
-		return (1);
-	}
-	return (0);
 }

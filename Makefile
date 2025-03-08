@@ -13,8 +13,8 @@ SRCS = ./so_long_src/so_long.c ./so_long_src/map_render.c ./so_long_src/player_m
 	   ./so_long_src/ft_split.c ./so_long_src/utils1.c ./so_long_src/utils2.c ./so_long_src/utils3.c ./so_long_src/so_long_utils.c ./so_long_src/path.c \
 	   ./ft_printf/ft_printf.c  ./ft_printf/ft_putchar.c ./ft_printf/ft_copyhexa.c ./ft_printf/ft_putnbr.c ./ft_printf/ft_putstr.c ./ft_printf/ft_copyadd.c 
 
-BONUS = ./so_long_src_bonus/so_long_bonus.c ./so_long_src_bonus/map_render_bonus.c ./so_long_src_bonus/player_movement_bonus.c ./so_long_src_bonus/get_next_line.c \
-     ./so_long_src_bonus/count_bonus.c ./so_long_src_bonus/enemy_bonus.c ./so_long_src_bonus/game_manager_bonus.c ./so_long_src_bonus/update_collectibles_bonus.c \
+BONUS = ./so_long_src_bonus/so_long_bonus.c ./so_long_src_bonus/map_render_bonus.c ./so_long_src_bonus/player_movement_bonus.c ./so_long_src_bonus/get_next_line.c ./so_long_src_bonus/player_movement_utils_bonus.c \
+     ./so_long_src_bonus/count_bonus.c ./so_long_src_bonus/enemy_bonus.c ./so_long_src_bonus/game_manager_bonus.c ./so_long_src_bonus/update_collectibles_bonus.c ./so_long_src_bonus/so_long_utils2_bonus.c \
 	   ./so_long_src_bonus/ft_split.c ./so_long_src_bonus/utils1_bonus.c ./so_long_src_bonus/utils2_bonus.c ./so_long_src_bonus/utils3_bonus.c ./so_long_src_bonus/so_long_utils_bonus.c ./so_long_src_bonus/path_bonus.c \
 	   ./ft_printf/ft_printf.c  ./ft_printf/ft_putchar.c ./ft_printf/ft_copyhexa.c ./ft_printf/ft_putnbr.c ./ft_printf/ft_putstr.c ./ft_printf/ft_copyadd.c 
 

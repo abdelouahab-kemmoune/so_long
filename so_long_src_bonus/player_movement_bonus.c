@@ -6,7 +6,7 @@
 /*   By: akemmoun <akemmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 15:10:10 by akemmoun          #+#    #+#             */
-/*   Updated: 2025/03/07 23:46:03 by akemmoun         ###   ########.fr       */
+/*   Updated: 2025/03/08 22:35:12 by akemmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,37 +61,13 @@ int	handle_keys(t_game *game)
 	mvt(&pos, game);
 	if (game->map[pos.n_ypos][pos.n_xpos] == '1')
 		return (0);
-	else if (game->map[pos.n_ypos][pos.n_xpos] == 'X')
-		close_window(game);
-	else if (game->map[pos.n_ypos][pos.n_xpos] == 'E')
-	{
-		if (is_exit_valid(game) == 0)
-		{
-			ft_printf("You won!\n");
-			close_window(game);
-		}
-		else if (!game->exit_message_displayed)
-		{
-			ft_printf("You must collect all diamonds before exiting!\n");
-			game->exit_message_displayed = 1;
-			return (0);
-		}
-	}
-	else if (game->map[pos.n_ypos][pos.n_xpos] == 'C')
-	{
-		game->has_collected = 1;
-		game->map[pos.n_ypos][pos.n_xpos] = '0';
-		game->count++;
-		put_count(game);
-	}
+	if (handle_special_cases(game, &pos))
+		return (0);
 	if ((game->p_xpos != pos.n_xpos || game->p_ypos != pos.n_ypos)
 		&& game->map[pos.n_ypos][pos.n_xpos] != 'E')
 	{
-		game->map[game->p_ypos][game->p_xpos] = '0';
-		game->map[pos.n_ypos][pos.n_xpos] = 'P';
+		update_player_position(game, &pos);
 		map_render(game, game->map, game->img_width, game->img_height);
-		game->p_xpos = pos.n_xpos;
-		game->p_ypos = pos.n_ypos;
 		game->count++;
 		put_count(game);
 		game->exit_message_displayed = 0;
@@ -116,7 +92,11 @@ int	loop(t_game *game)
 		update_collectibles(game);
 		frame_counter = 0;
 	}
-	handle_keys(game);
+	if (game->keypress != 0)
+	{
+		handle_keys(game);
+	}
+	return (1);
 	put_count(game);
 	return (1);
 }

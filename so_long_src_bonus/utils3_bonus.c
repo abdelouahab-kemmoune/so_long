@@ -6,7 +6,7 @@
 /*   By: akemmoun <akemmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 19:07:25 by akemmoun          #+#    #+#             */
-/*   Updated: 2025/03/07 02:44:26 by akemmoun         ###   ########.fr       */
+/*   Updated: 2025/03/08 22:27:49 by akemmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,26 @@ char	*ft_strchr(const char *str, int c)
 	return (NULL);
 }
 
-// int	set_zero(t_game *game)
-// {
-// 	game->flag = 0;
-// 	game->keypress = 0;
-// 	game->count = 0;
-// 	game->has_collected = 0;
-// 	game->curr_frame = 0;
-// 	game->exit_message_displayed = 0;
-// 	game->rows = 0;
-// 	return (0);
-// }
+void	ft_check_files(t_game *game)
+{
+	if (!(game->frames[0] || game->frames[1] || game->frames[2]
+			|| game->frames[3] || game->frames[4] || game->ground
+			|| game->closedexit || game->right_player || game->left_player
+			|| game->wall || game->count_moves || game->collectible
+			|| game->enemies))
+	{
+		close_window(game);
+		free_all(game);
+	}
+}
+
+int	is_map_empty(char **map, t_game *game)
+{
+	if (!map || !map[0])
+	{
+		ft_printf("ERROR:\nMap is empty!");
+		close_window(game);
+		exit(0);
+	}
+	return (0);
+}

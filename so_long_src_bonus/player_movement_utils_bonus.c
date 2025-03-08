@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_movement_utils.c                            :+:      :+:    :+:   */
+/*   player_movement_utils_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akemmoun <akemmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 23:51:02 by akemmoun          #+#    #+#             */
-/*   Updated: 2025/03/08 21:36:12 by akemmoun         ###   ########.fr       */
+/*   Updated: 2025/03/08 22:32:54 by akemmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	handle_special_cases(t_game *game, t_npos *pos)
 {
@@ -35,7 +35,7 @@ int	handle_special_cases(t_game *game, t_npos *pos)
 		game->has_collected = 1;
 		game->map[pos->n_ypos][pos->n_xpos] = '0';
 		game->count++;
-		ft_printf("Moves: %d\n", game->count);
+		put_count(game);
 	}
 	return (0);
 }
