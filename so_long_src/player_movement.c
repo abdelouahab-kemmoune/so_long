@@ -6,7 +6,7 @@
 /*   By: akemmoun <akemmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 19:10:55 by akemmoun          #+#    #+#             */
-/*   Updated: 2025/03/07 02:42:31 by akemmoun         ###   ########.fr       */
+/*   Updated: 2025/03/08 21:22:01 by akemmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,46 +52,20 @@ void	mvt(t_npos *npos, t_game *game)
 	}
 }
 
-int	handle_keys(t_game *game)
+int handle_keys(t_game *game)
 {
-	t_npos	pos;
+	t_npos pos = {game->p_xpos, game->p_ypos};
 
-	pos.n_xpos = game->p_xpos;
-	pos.n_ypos = game->p_ypos;
 	mvt(&pos, game);
 	if (game->map[pos.n_ypos][pos.n_xpos] == '1')
 		return (0);
-	else if (game->map[pos.n_ypos][pos.n_xpos] == 'X')
-		close_window(game);
-	else if (game->map[pos.n_ypos][pos.n_xpos] == 'E')
-	{
-		if (is_exit_valid(game) == 0)
-		{
-			ft_printf("You won!\n");
-			close_window(game);
-		}
-		else if (!game->exit_message_displayed)
-		{
-			ft_printf("You must collect all diamonds before exiting!\n");
-			game->exit_message_displayed = 1;
-			return (0);
-		}
-	}
-	else if (game->map[pos.n_ypos][pos.n_xpos] == 'C')
-	{
-		game->has_collected = 1;
-		game->map[pos.n_ypos][pos.n_xpos] = '0';
-		game->count++;
-		ft_printf("Moves: %d\n", game->count);
-	}
+	if (handle_special_cases(game, &pos))
+		return (0);
 	if ((game->p_xpos != pos.n_xpos || game->p_ypos != pos.n_ypos)
 		&& game->map[pos.n_ypos][pos.n_xpos] != 'E')
 	{
-		game->map[game->p_ypos][game->p_xpos] = '0';
-		game->map[pos.n_ypos][pos.n_xpos] = 'P';
+		update_player_position(game, &pos);
 		map_render(game, game->map, game->img_width, game->img_height);
-		game->p_xpos = pos.n_xpos;
-		game->p_ypos = pos.n_ypos;
 		game->count++;
 		ft_printf("Moves: %d\n", game->count);
 		game->exit_message_displayed = 0;

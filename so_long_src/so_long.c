@@ -6,7 +6,7 @@
 /*   By: akemmoun <akemmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 17:42:59 by akemmoun          #+#    #+#             */
-/*   Updated: 2025/03/07 21:06:17 by akemmoun         ###   ########.fr       */
+/*   Updated: 2025/03/08 01:29:36 by akemmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,21 +55,20 @@ int	close_window(t_game *game)
 
 void	load_all_sprites(t_game *game)
 {
-	game->ground = mlx_xpm_file_to_image(game->mlx, \
-	"./assets/ground.xpm", &game->img_width, &game->img_height);
-	game->closedexit = mlx_xpm_file_to_image(game->mlx, \
-	"./assets/exit.xpm", &game->img_width, &game->img_height);
-	game->right_player = mlx_xpm_file_to_image(game->mlx, \
-	"./assets/right_steve.xpm", &game->img_width, &game->img_height);
-	game->left_player = mlx_xpm_file_to_image(game->mlx, \
-	"./assets/left_steve.xpm", &game->img_width, &game->img_height);
-	game->wall = mlx_xpm_file_to_image(game->mlx, \
-	"./assets/wall.xpm", &game->img_width, &game->img_height);
-	game->collectible = mlx_xpm_file_to_image(game->mlx, \
-	"./assets/diamond1.xpm", &game->img_width, &game->img_height);
-	game->count_moves = mlx_xpm_file_to_image(game->mlx, \
-	"./assets/count_moves.xpm", &game->img_width, &game->img_height);
-	
+	game->ground = mlx_xpm_file_to_image(game->mlx, "./assets/ground.xpm",
+			&game->img_width, &game->img_height);
+	game->closedexit = mlx_xpm_file_to_image(game->mlx, "./assets/exit.xpm",
+			&game->img_width, &game->img_height);
+	game->right_player = mlx_xpm_file_to_image(game->mlx,
+			"./assets/right_steve.xpm", &game->img_width, &game->img_height);
+	game->left_player = mlx_xpm_file_to_image(game->mlx,
+			"./assets/left_steve.xpm", &game->img_width, &game->img_height);
+	game->wall = mlx_xpm_file_to_image(game->mlx, "./assets/wall.xpm",
+			&game->img_width, &game->img_height);
+	game->collectible = mlx_xpm_file_to_image(game->mlx,
+			"./assets/diamond1.xpm", &game->img_width, &game->img_height);
+	game->count_moves = mlx_xpm_file_to_image(game->mlx,
+			"./assets/count_moves.xpm", &game->img_width, &game->img_height);
 	ft_check_files(game);
 }
 
@@ -84,23 +83,17 @@ void	init_game(t_game *game, char *av)
 	}
 	// set_zero(game);
 	game->map = get_map(av, game);
-	
-	if (!game->map)
+	if (!game->map || is_map_empty(game->map, game))
 	{
 		ft_printf("ERROR: Failed to load map.\n");
 		exit(1);
 	}
-	
 	game->cols = ft_strlen(game->map[0]);
-	
-	while (game->map[game->rows] != NULL){
+	while (game->map[game->rows] != NULL)
 		game->rows++;
-		
 	load_all_sprites(game);
-		}
-	game->window = mlx_new_window(game->mlx, \
-	game->cols * game->img_width, game->rows * game->img_height, "minecraft");
-	printf("walo");
+	game->window = mlx_new_window(game->mlx, game->cols * game->img_width,
+			game->rows * game->img_height, "minecraft");
 	if (!game->window)
 	{
 		ft_printf("ERROR: Failed to create window.\n");
@@ -115,9 +108,7 @@ int	main(int ac, char **av)
 
 	if (ac == 2)
 	{
-		printf("dsds");
 		init_game(&game, av[1]);
-		printf("dsds");
 		if (file_check(av[1]) == 0)
 		{
 			ft_printf("ERROR:\nWrong file format!!");

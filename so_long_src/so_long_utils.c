@@ -6,7 +6,7 @@
 /*   By: akemmoun <akemmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 19:10:17 by akemmoun          #+#    #+#             */
-/*   Updated: 2025/03/07 21:06:08 by akemmoun         ###   ########.fr       */
+/*   Updated: 2025/03/08 01:24:00 by akemmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,9 @@ char	*read_map(int fd)
 		file = ft_strjoin(file, line);
 		free(temp);
 		free(line);
-
 		if (!file)
 			return (NULL);
 	}
-	
 	return (file);
 }
 
@@ -47,23 +45,17 @@ char	**get_map(char *name, t_game *game)
 		ft_printf("ERROR:\nCannot open file!");
 		close_window(game);
 	}
-	
 	file = read_map(fd);
-	
-	close (fd);
-	
-	if (!file){
-		
+	close(fd);
+	if (!file)
+	{
 		close_window(game);
 	}
-	
 	map = ft_split(file, '\n');
 	free(file);
 	close(fd);
-	
 	return (map);
 }
-
 
 int	file_check(char *filename)
 {
@@ -110,4 +102,15 @@ void	ft_check_files(t_game *game)
 		close_window(game);
 		free_all(game);
 	}
+}
+
+int	is_map_empty(char **map, t_game *game)
+{
+	if (!map || !map[0])
+	{
+		ft_printf("ERROR:\nMap is empty!");
+		close_window(game);
+		return (1);
+	}
+	return (0);
 }

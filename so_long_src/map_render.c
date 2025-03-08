@@ -15,19 +15,25 @@
 void	map_image(t_game *game, int xpos, int ypos, char c)
 {
 	if (c == '1')
-		mlx_put_image_to_window(game->mlx, game->window, game->wall, xpos, ypos);
-	else if (c == '0') 
-		mlx_put_image_to_window(game->mlx, game->window, game->ground, xpos, ypos);
+		mlx_put_image_to_window(game->mlx, game->window, game->wall, xpos,
+			ypos);
+	else if (c == '0')
+		mlx_put_image_to_window(game->mlx, game->window, game->ground, xpos,
+			ypos);
 	else if (c == 'E')
-		mlx_put_image_to_window(game->mlx, game->window, game->closedexit, xpos, ypos);
+		mlx_put_image_to_window(game->mlx, game->window, game->closedexit, xpos,
+			ypos);
 	else if (c == 'C')
-		mlx_put_image_to_window(game->mlx, game->window, game->collectible, xpos, ypos);
+		mlx_put_image_to_window(game->mlx, game->window, game->collectible,
+			xpos, ypos);
 	else if (c == 'P')
 	{
 		if (game->flag == 1)
-			mlx_put_image_to_window(game->mlx, game->window, game->left_player, xpos, ypos);
+			mlx_put_image_to_window(game->mlx, game->window, game->left_player,
+				xpos, ypos);
 		else
-			mlx_put_image_to_window(game->mlx, game->window, game->right_player, xpos, ypos);
+			mlx_put_image_to_window(game->mlx, game->window, game->right_player,
+				xpos, ypos);
 	}
 }
 

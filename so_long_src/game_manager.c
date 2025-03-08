@@ -110,11 +110,6 @@
 // 	return (1);
 // }
 
-
-
-
-
-
 int	error_handle(t_data data)
 {
 	if (data.exit > 1)

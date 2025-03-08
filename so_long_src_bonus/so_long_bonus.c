@@ -6,7 +6,7 @@
 /*   By: akemmoun <akemmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 15:10:10 by akemmoun          #+#    #+#             */
-/*   Updated: 2025/03/07 23:46:47 by akemmoun         ###   ########.fr       */
+/*   Updated: 2025/03/08 21:05:23 by akemmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	free_all(t_game *game)
 		{
 			mlx_destroy_image(game->mlx, game->frames[i]);
 			game->frames[i] = NULL;
-			i++;
 		}
+		i++;
 	}
 }
 
@@ -46,6 +46,7 @@ int	close_window(t_game *game)
 {
 	int	i;
 
+	
 	free_all(game);
 	if (game->map)
 	{
@@ -66,7 +67,6 @@ int	close_window(t_game *game)
 			mlx_destroy_image(game->mlx, game->frames[i]);
 		i++;
 	}
-	mlx_clear_window(game->mlx, game->window);
 	if (game->window)
 	{
 		mlx_destroy_window(game->mlx, game->window);
@@ -122,23 +122,22 @@ void	init_game(t_game *game, char *av)
 	}
 	// set_zero(game);
 	game->map = get_map(av, game);
-	if (!game->map)
+	if (!game->map || is_map_empty(game->map, game))
 	{
 		ft_printf("ERROR: Failed to load map.\n");
-		exit(1);
+		close_window(game);
 	}
 	game->cols = ft_strlen(game->map[0]);
 	while (game->map[game->rows] != NULL)
 		game->rows++;
 	load_all_sprites(game);
-	game->window = mlx_new_window(game->mlx, game->cols * game->img_width,
-			game->rows * game->img_height + 52, "minecraft");
+	game->window = mlx_new_window(game->mlx, \
+	game->cols * game->img_width, game->rows * game->img_height + 52, "minecraft");
 	if (!game->window)
 	{
 		ft_printf("ERROR: Failed to create window.\n");
 		close_window(game);
 	}
-	// put_count(game);
 }
 
 int	main(int ac, char **av)

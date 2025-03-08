@@ -6,7 +6,7 @@
 /*   By: akemmoun <akemmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 16:43:30 by akemmoun          #+#    #+#             */
-/*   Updated: 2025/03/07 21:44:39 by akemmoun         ###   ########.fr       */
+/*   Updated: 2025/03/08 01:26:12 by akemmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ char		**copy_map(t_game *game, char **map);
 char		**get_map(char *name, t_game *game);
 char		*ft_strchr(const char *str, int c);
 
+int	is_map_empty(char **map, t_game *game);
 // int			close_window2(t_game *game);
 int			is_exit_valid(t_game *game);
 // int			handle_keys_util1(t_game *game);
