@@ -6,7 +6,7 @@
 /*   By: akemmoun <akemmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 16:43:30 by akemmoun          #+#    #+#             */
-/*   Updated: 2025/03/08 22:44:44 by akemmoun         ###   ########.fr       */
+/*   Updated: 2025/03/09 21:38:37 by akemmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,11 @@
 # define ESC_KEY 65307
 
 # include "../ft_printf/ft_printf.h"
-# include "../mlx.h"
+# include <mlx.h>
 # include "get_next_line.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
-
-// typedef struct s_enemy
-// {
-// 	int	x;
-// 	int	y;
-// 	int	frame;
-// 	int	counter;
-// }	t_enemy;
 
 typedef struct s_game
 {

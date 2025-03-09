@@ -1,7 +1,6 @@
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g
-MLX_PATH = ./mlx
-MLX_FLAGS = -L$(MLX_PATH) -lmlx -lX11 -lXext -lm
+CFLAGS = -Wall -Werror -Wextra
+MLX_FLAGS = -lmlx -lX11 -lXext -lm
 
 NAME1 = so_long.a
 NAME2 = so_long_bonus.a
