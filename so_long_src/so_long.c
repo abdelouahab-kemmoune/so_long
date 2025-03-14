@@ -6,7 +6,7 @@
 /*   By: akemmoun <akemmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 17:42:59 by akemmoun          #+#    #+#             */
-/*   Updated: 2025/03/08 22:24:04 by akemmoun         ###   ########.fr       */
+/*   Updated: 2025/03/14 21:05:09 by akemmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	load_all_sprites(t_game *game)
 	game->collectible = mlx_xpm_file_to_image(game->mlx,
 			"./assets/diamond1.xpm", &game->img_width, &game->img_height);
 	game->count_moves = mlx_xpm_file_to_image(game->mlx,
-			"./assets/count_moves.xpm", &game->img_width, &game->img_height);
+			"./assets/count.xpm", &game->img_width, &game->img_height);
 	ft_check_files(game);
 }
 

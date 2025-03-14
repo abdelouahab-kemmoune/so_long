@@ -6,7 +6,7 @@
 /*   By: akemmoun <akemmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 19:07:25 by akemmoun          #+#    #+#             */
-/*   Updated: 2025/03/08 21:36:58 by akemmoun         ###   ########.fr       */
+/*   Updated: 2025/03/14 21:04:54 by akemmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,11 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 
 void	ft_check_files(t_game *game)
 {
-	if (!(game->ground || game->closedexit || game->right_player
-			|| game->left_player || game->wall || game->count_moves
-			|| game->collectible))
+	if (!game->ground || !game->closedexit || !game->right_player
+			|| !game->left_player || !game->wall || !game->count_moves
+			|| !game->collectible)
 	{
+		ft_printf("Invalid map components");
 		close_window(game);
 		free_all(game);
 	}
